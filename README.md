@@ -43,7 +43,6 @@ python3 val.py
 
 ## Inference
 
-### Images
 ```python
-python3 test_image.py
+python3 vega_video.py
 ```
