@@ -143,7 +143,7 @@ async def main():
     model.load_state_dict(torch.load('models/velloai_models/lanefreespacemodel.pth'))
     model.eval()
 
-    model_yolo = YoloTRT(library="/home/velloai/Desktop/LaneFreeSpaceDetector/models/velloai_models/yolov5/build/libmyplugins.so", engine="/home/velloai/Desktop/LaneFreeSpaceDetector/models/velloai_models/yolov5/build/yolov5s.engine", conf=0.5, yolo_ver="v5")
+    model_yolo = YoloTRT(library="/home/velloai/Lane-Freespace-Detector-python/models/velloai_models/yolov5/build/libmyplugins.so", engine="/home/velloai/Lane-Freespace-Detector-python/models/velloai_models/yolov5/build/yolov5s.engine", conf=0.5, yolo_ver="v5")
 
     # Run video processing and drone control concurrently
     await asyncio.gather(
