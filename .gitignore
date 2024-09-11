@@ -1,0 +1,6 @@
+*.mp4
+*.pth
+*.pt
+*.wts
+*.pyc
+models/velloai_models/yolov5/build

@@ -45,7 +45,7 @@ model_yolo = YoloTRT(library="/home/velloai/Desktop/LaneFreeSpaceDetector/models
 output_file = "model_outputs/output_processed_video.mp4"
 fourcc = cv2.VideoWriter_fourcc(*"XVID")
 
-video_feed = cv2.VideoCapture('video/video0.mp4')
+video_feed = cv2.VideoCapture('videos/video0.mp4')
 
 if not video_feed.isOpened():
     print("Error: Could not open video feed.")
