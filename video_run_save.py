@@ -40,7 +40,7 @@ model = model.cuda()
 model.load_state_dict(torch.load('models/velloai_models/lanefreespacemodel.pth'))
 model.eval()
 
-model_yolo = YoloTRT(library="/home/velloai/Desktop/LaneFreeSpaceDetector/models/velloai_models/yolov5/build/libmyplugins.so", engine="/home/velloai/Desktop/LaneFreeSpaceDetector/models/velloai_models/yolov5/build/yolov5s.engine", conf=0.5, yolo_ver="v5")
+model_yolo = YoloTRT(library="/home/vegaai/Lane-Freespace-Detector-python/models/velloai_models/yolov5/build/libmyplugins.so", engine="/home/vegaai/Lane-Freespace-Detector-python/models/velloai_models/yolov5/build/yolov5s.engine", conf=0.5, yolo_ver="v5")
 
 output_file = "model_outputs/output_processed_video.mp4"
 fourcc = cv2.VideoWriter_fourcc(*"XVID")
