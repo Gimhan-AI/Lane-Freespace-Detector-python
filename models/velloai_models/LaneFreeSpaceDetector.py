@@ -455,13 +455,13 @@ class TwinLiteNet(nn.Module):
         x=self.encoder(input)
         x1=self.up_1_1(x)
         x1=self.up_2_1(x1)
-        classifier1=self.classifier_1(x1)
+        classifier1=self.classifier_1(x1) # This is the freespace detector
         
         
 
         x2=self.up_1_2(x)
         x2=self.up_2_2(x2)
-        classifier2=self.classifier_2(x2)
+        classifier2=self.classifier_2(x2) # This is the lane detector
 
         return (classifier1,classifier2)
 
