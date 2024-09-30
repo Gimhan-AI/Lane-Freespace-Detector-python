@@ -3,4 +3,5 @@
 *.pt
 *.wts
 *.pyc
+*.webm
 models/velloai_models/yolov5/build

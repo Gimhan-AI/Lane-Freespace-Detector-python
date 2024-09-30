@@ -94,6 +94,7 @@ model.eval()
 model_yolo = YoloTRT(library="/home/vegaai/Lane-Freespace-Detector-python/models/velloai_models/yolov5/build/libmyplugins.so", engine="/home/vegaai/Lane-Freespace-Detector-python/models/velloai_models/yolov5/build/yolov5s.engine", conf=0.5, yolo_ver="v5")
 
 camera_feed = cv2.VideoCapture('videos/video0.mp4')
+camera_feed = cv2.VideoCapture('videos/trace.webm')
 
 camera_feed.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 camera_feed.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)

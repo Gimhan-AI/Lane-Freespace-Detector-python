@@ -62,8 +62,13 @@ def draw_directional_arrow(image, start_point, end_point):
     if start_point and end_point:
         angle = np.arctan2(end_point[1] - start_point[1], end_point[0] - start_point[0])
         arrow_length = 100  # Fixed size for the small arrow
-        end_point = (int(start_point[0] + arrow_length * np.cos(angle)), int(start_point[1] + arrow_length * np.sin(angle)))
-        cv2.arrowedLine(image, start_point, end_point, (255, 255, 0), 3, tipLength=0.3)
+        end_point_arrow = (int(start_point[0] + arrow_length * np.cos(angle)), int(start_point[1] + arrow_length * np.sin(angle)))
+        cv2.arrowedLine(image, start_point, end_point_arrow, (255, 255, 0), 3, tipLength=0.3)
+    # cv2.line(image, start_point, (350, 100), (0, 255, 255), 3)
+    fixed_angle = np.arctan2(100 - 460, 350 - 350)  # This is 0 because the line is vertical
+    steering_angle = np.degrees(angle - fixed_angle)
+    steering_angle = np.clip(steering_angle, -45, 45)
+    cv2.putText(image, f"Steering Angle: {steering_angle:.2f} degrees", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     return image
 
 model = net.TwinLiteNet()
@@ -72,7 +77,8 @@ model = model.cuda()
 model.load_state_dict(torch.load('models/velloai_models/lanefreespacemodel.pth'))
 model.eval()
 model_yolo = YoloTRT(library="/home/vegaai/Lane-Freespace-Detector-python/models/velloai_models/yolov5/build/libmyplugins.so", engine="/home/vegaai/Lane-Freespace-Detector-python/models/velloai_models/yolov5/build/yolov5s.engine", conf=0.5, yolo_ver="v5")
-camera_feed = cv2.VideoCapture('videos/video0.mp4')
+# camera_feed = cv2.VideoCapture('videos/video0.mp4')
+camera_feed = cv2.VideoCapture('videos/trace.webm')
 camera_feed.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 camera_feed.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 if not camera_feed.isOpened():
